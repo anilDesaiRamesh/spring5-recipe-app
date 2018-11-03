@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+<meta charset="ISO-8859-1" />
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>My Recipes!!!</h1>
+
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>Description</th>
+		</tr>
+		<tr th:each="recipe:${recipes}">
+			<td th:text="${recipe.id}">123</td>
+			<td th:text="${recipe.description}">Good One</td>
+		</tr>
+	</table>
+
+</body>
+</html>
