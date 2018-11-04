@@ -14,12 +14,14 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * @author Anil_Ramesh
  *
  */
 @Data
+@EqualsAndHashCode(exclude="recipes")
 @Entity
 public class Category {
 
