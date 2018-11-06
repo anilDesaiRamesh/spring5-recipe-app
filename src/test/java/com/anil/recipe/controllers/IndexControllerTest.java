@@ -3,8 +3,7 @@
  */
 package com.anil.recipe.controllers;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -25,7 +24,6 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.Model;
 
-import com.anil.recipe.controllers.IndexController;
 import com.anil.recipe.domain.Recipe;
 import com.anil.recipe.services.RecipeService;
 
