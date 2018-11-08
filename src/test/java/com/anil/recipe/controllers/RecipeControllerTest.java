@@ -5,6 +5,7 @@ package com.anil.recipe.controllers;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
@@ -25,13 +26,13 @@ import com.anil.recipe.services.RecipeService;
  *
  */
 public class RecipeControllerTest {
-	
+
 	RecipeController recipeController;
-	
+
 	@Mock
 	RecipeService recipeService;
-	
-	Long Id_1=1l;
+
+	Long Id_1 = 1l;
 
 	/**
 	 * @throws java.lang.Exception
@@ -46,12 +47,13 @@ public class RecipeControllerTest {
 	public void test() throws Exception {
 		Recipe recipe = new Recipe();
 		recipe.setId(Id_1);
-		
+
 		when(recipeService.findById(ArgumentMatchers.anyLong())).thenReturn(recipe);
-		
+
 		MockMvc mockMvc = MockMvcBuilders.standaloneSetup(recipeController).build();
-		mockMvc.perform(MockMvcRequestBuilders.get("/recipe/show/1")).andExpect(status().isOk()).andExpect(view().name("recipe/show"));
-		
+		mockMvc.perform(MockMvcRequestBuilders.get("/recipe/show/1")).andExpect(status().isOk())
+				.andExpect(view().name("recipe/show")).andExpect(model().attributeExists("recipe"));
+
 	}
 
 }

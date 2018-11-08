@@ -38,7 +38,7 @@ public class Ingredient {
 
 	public Ingredient(String descritpion, BigDecimal amount, UnitOfMeasure uom) {
 		// TODO Auto-generated constructor stub
-		this.description = description;
+		this.description = descritpion;
 		this.amount = amount;
 		this.uom = uom;
 
