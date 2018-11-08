@@ -4,7 +4,10 @@
 package com.anil.recipe.services;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
+
+import javax.management.RuntimeErrorException;
 
 import org.springframework.stereotype.Service;
 
@@ -40,6 +43,16 @@ public class RecipeServiceImpl implements RecipeService {
 		Set<Recipe> recipeSet = new HashSet<>();
 		recipeRepository.findAll().iterator().forEachRemaining(recipeSet::add);
 		return recipeSet;
+	}
+
+	@Override
+	public Recipe findById(Long Id) {
+		// TODO Auto-generated method stub
+		Optional<Recipe> findById = recipeRepository.findById(Id);
+		if (!findById.isPresent())
+			throw new RuntimeException("Recipe Not Found");
+
+		return findById.get();
 	}
 
 }

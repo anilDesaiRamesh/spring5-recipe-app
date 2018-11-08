@@ -4,15 +4,18 @@
 package com.anil.recipe.services;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
@@ -57,6 +60,23 @@ public class RecipeServiceImplTest {
 		Set<Recipe> recipes = recipeServiceImpl.getRecipes();
 		assertEquals(recipes.size(), 1);
 		verify(recipeRepository, times(1)).findAll();
+
+	}
+
+	@Test
+	public void testGetRecipeById() {
+
+		Recipe recipe = new Recipe();
+		Long Id_1 = 1l;
+		recipe.setId(Id_1);
+
+		when(recipeRepository.findById(ArgumentMatchers.anyLong())).thenReturn(Optional.of(recipe));
+
+		Recipe findById = recipeServiceImpl.findById(Id_1);
+		assertNotNull(findById);
+		assertEquals(findById.getId(), Id_1);
+		verify(recipeRepository).findById(ArgumentMatchers.anyLong());
+		verify(recipeRepository, never()).findAll();
 
 	}
 

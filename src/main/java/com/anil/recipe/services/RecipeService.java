@@ -14,4 +14,6 @@ import com.anil.recipe.domain.Recipe;
 public interface RecipeService {
 
 	Set<Recipe> getRecipes();
+	
+	Recipe findById(Long Id);
 }
