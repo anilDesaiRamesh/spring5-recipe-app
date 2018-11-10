@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import com.anil.recipe.domain.commands.IngredientCommand;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -21,7 +23,7 @@ import lombok.EqualsAndHashCode;
  *
  */
 @Data
-@EqualsAndHashCode(exclude="uom")
+@EqualsAndHashCode(exclude = "uom")
 @Entity
 public class Ingredient {
 
@@ -53,6 +55,8 @@ public class Ingredient {
 
 	}
 
-	
+	public Ingredient() {
+
+	}
 
 }

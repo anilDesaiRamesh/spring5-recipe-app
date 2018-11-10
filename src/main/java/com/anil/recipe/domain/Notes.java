@@ -10,15 +10,18 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 
+import com.anil.recipe.domain.commands.NotesCommand;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 /**
  * @author Anil_Ramesh
  *
  */
 @Data
-@EqualsAndHashCode(exclude="recipe")
+@EqualsAndHashCode(exclude = "recipe")
 @Entity
 public class Notes {
 

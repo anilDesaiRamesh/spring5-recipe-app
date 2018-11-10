@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.anil.recipe.domain.commands.CategoryCommand;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -21,7 +23,7 @@ import lombok.EqualsAndHashCode;
  *
  */
 @Data
-@EqualsAndHashCode(exclude="recipes")
+@EqualsAndHashCode(exclude = "recipes")
 @Entity
 public class Category {
 
