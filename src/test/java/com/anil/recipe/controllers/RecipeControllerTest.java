@@ -4,6 +4,7 @@
 package com.anil.recipe.controllers;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -92,6 +93,15 @@ public class RecipeControllerTest {
 
 		mockMvc.perform(MockMvcRequestBuilders.post("/recipe/1/update")).andExpect(status().isOk())
 				.andExpect(view().name("recipe/recipeform")).andExpect(model().attributeExists("recipe"));
+	}
+	
+	@Test
+	public void testDeleteRecipe() throws Exception {
+
+		mockMvc.perform(MockMvcRequestBuilders.post("/recipe/1/delete")).andExpect(status().is3xxRedirection())
+		.andExpect(view().name("redirect:/"));
+		verify(recipeService).deleteById(ArgumentMatchers.any());
+		
 	}
 
 }

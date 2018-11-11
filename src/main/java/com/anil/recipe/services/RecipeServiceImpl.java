@@ -83,4 +83,10 @@ public class RecipeServiceImpl implements RecipeService {
 		return recipeToRecipeCommand.convert(findById(Id));
 	}
 
+	@Override
+	public void deleteById(Long Id) {
+		// TODO Auto-generated method stub
+		recipeRepository.deleteById(Id);
+	}
+
 }
