@@ -8,6 +8,7 @@ import java.util.Optional;
 import java.util.Set;
 
 import javax.management.RuntimeErrorException;
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -66,12 +67,20 @@ public class RecipeServiceImpl implements RecipeService {
 	}
 
 	@Override
+	@Transactional
 	public RecipeCommand saveRecipeCommand(RecipeCommand command) {
 		// TODO Auto-generated method stub
 		Recipe convert = recipeCommandToRecipe.convert(command);
 		Recipe save = recipeRepository.save(convert);
 		log.debug("Saved RecipeId:" + save.getId());
 		return recipeToRecipeCommand.convert(save);
+	}
+
+	@Override
+	@Transactional
+	public Object findCommandById(Long Id) {
+		// TODO Auto-generated method stub
+		return recipeToRecipeCommand.convert(findById(Id));
 	}
 
 }

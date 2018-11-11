@@ -3,6 +3,8 @@
  */
 package com.anil.recipe.controllers;
 
+import javax.websocket.server.PathParam;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,7 +32,7 @@ public class RecipeController {
 		this.recipeService = recipeService;
 	}
 
-	@RequestMapping("/recipe/show/{id}")
+	@RequestMapping("/recipe/{id}/show")
 	public String showById(@PathVariable String id, Model model) {
 
 		Recipe findById = recipeService.findById(new Long(id));
@@ -39,18 +41,25 @@ public class RecipeController {
 
 	}
 
-	@RequestMapping({"/recipe/new/","recipe/new"})
+	@RequestMapping("recipe/new")
 	public String newRecipe(Model model) {
 		model.addAttribute("recipe", new RecipeCommand());
 		return "recipe/recipeform";
 	}
 
 	@PostMapping
-	@RequestMapping("/recipe/")
+	@RequestMapping("recipe")
 	public String saveOrUpdate(@ModelAttribute RecipeCommand recipeCommand) {
 		RecipeCommand saveRecipeCommand = recipeService.saveRecipeCommand(recipeCommand);
-		return "redirect:/recipe/show/" + saveRecipeCommand.getId();
+		return "redirect:/recipe/" + saveRecipeCommand.getId()+"/show/";
 
+	}
+	
+	@RequestMapping("recipe/{id}/update")
+	public String updateRecipe(@PathVariable String id, Model model) {
+		
+		model.addAttribute("recipe", recipeService.findCommandById(new Long(id)));
+		return "recipe/recipeform";
 	}
 
 }
