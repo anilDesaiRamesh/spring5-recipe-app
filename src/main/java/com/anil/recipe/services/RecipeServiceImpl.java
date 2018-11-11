@@ -78,7 +78,7 @@ public class RecipeServiceImpl implements RecipeService {
 
 	@Override
 	@Transactional
-	public Object findCommandById(Long Id) {
+	public RecipeCommand findCommandById(Long Id) {
 		// TODO Auto-generated method stub
 		return recipeToRecipeCommand.convert(findById(Id));
 	}

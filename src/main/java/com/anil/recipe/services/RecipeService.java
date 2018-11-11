@@ -20,7 +20,7 @@ public interface RecipeService {
 	
 	RecipeCommand saveRecipeCommand(RecipeCommand command);
 
-	Object findCommandById(Long Id);
+	RecipeCommand findCommandById(Long Id);
 	
 	void deleteById(Long Id);
 }
